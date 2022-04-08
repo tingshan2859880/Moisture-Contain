@@ -1,0 +1,17 @@
+@charset "UTF-8";
+div {
+    font-size: 15px;
+  }
+head{
+    font-family:'Microsoft JhengHei', sans-serif;
+  } 
+  
+body{
+    font-family:'Microsoft JhengHei', sans-serif;
+    } 
+
+.grey_button {padding:5px 15px; background:#555555; border:0 none;
+    color: white;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }

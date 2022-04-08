@@ -1,16 +1,27 @@
+<!DOCTYPE html>
 <html>
     <head>
-<style>
-    .toright {text-align: right;}
-</style>
+        <title>水分含量計算</title>
+        <style>
+            .toright {text-align: right;}
+        </style>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+        </script>
+        <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
     </head>
     <body>
         <div>
-            {[原料水分(%)/100*原料重量(g)]+應加水量(g)}/[原料重量(g)+應加水量(g)]*100=目標水分(%)
+            $$\frac{\mbox{原料水分(%)} \times \mbox{原料重量(g)} + \mbox{應加水量(g)}}{\mbox{原料重量(g)}+\mbox{應加水量(g)}} \times 100 = \mbox{目標水分(%)}$$
         </div>
-        <div>
+        <!-- <div>
             應加水量(g)=原料重量(g)*(目標水分(%)-原料水分(%))/(100-目標水分(%))
-        </div>
+        </div> -->
         <table>
             <tr>
                 <td class="toright">原料水分(%)=</td>
@@ -43,7 +54,7 @@
                 <td><input id="targetWater" value="20" type="number" /></td>
             </tr>
         </table>
-        <button onclick="targetwatergo();">計算目標水分</button>&nbsp;<button onclick="addwatergo();">計算應加水量</button>
+        <button class='grey_button' onclick="targetwatergo();">計算目標水分</button>&nbsp;<button class='grey_button' onclick="addwatergo();">計算應加水量</button>
         <div id="result"></div>
     </body>
 </html>

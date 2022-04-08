@@ -1,0 +1,74 @@
+<html>
+    <head>
+<style>
+    .toright {text-align: right;}
+</style>
+    </head>
+    <body>
+        <div>
+            {[原料水分(%)/100*原料重量(g)]+應加水量(g)}/[原料重量(g)+應加水量(g)]*100=目標水分(%)
+        </div>
+        <div>
+            應加水量(g)=原料重量(g)*(目標水分(%)-原料水分(%))/(100-目標水分(%))
+        </div>
+        <table>
+            <tr>
+                <td class="toright">原料水分(%)=</td>
+                <td><input id="sourceWater" value="11" list="list_water" type="number"/>
+                    <datalist id="list_water">
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td class="toright">原料重量(g)=</td>
+                <td><input id="sourceWeight" value="1000" list="list_weight" type="number" step="1000"/>
+                    <datalist id="list_weight">
+                        <option>1000</option>
+                        <option>5000</option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td class="toright">應加水量(g)=</td>
+                <td><input id="sourceAddWater" value="30" type="number" />
+
+                </td>
+            </tr>
+            <tr>
+                <td class="toright">目標水分(%)=</td>
+                <td><input id="targetWater" value="20" type="number" /></td>
+            </tr>
+        </table>
+        <button onclick="targetwatergo();">計算目標水分</button>&nbsp;<button onclick="addwatergo();">計算應加水量</button>
+        <div id="result"></div>
+    </body>
+</html>
+<script>
+ targetwatergo=()=>{
+    var s_Water = document.getElementById('sourceWater').value;
+    var s_Weight = document.getElementById('sourceWeight').value;
+    var s_AddWater = document.getElementById('sourceAddWater').value;
+    var t_Water = document.getElementById('targetWater').value;    
+    var s  = '('+ s_Water+'/100*'+s_Weight+'+'+s_AddWater+')/('+
+    s_Weight+'+'+s_AddWater+')*100';
+    var v =Math.round(eval(s)*10)/10;
+    document.getElementById('result').innerHTML =s+'='+v+'%';  
+    document.getElementById('targetWater').value=v;  
+}
+
+ addwatergo=()=>{
+    var s_Water = document.getElementById('sourceWater').value;
+    var s_Weight = document.getElementById('sourceWeight').value;
+    var s_AddWater = document.getElementById('sourceAddWater').value;
+    var t_Water = document.getElementById('targetWater').value; 
+    var s  = s_Weight+'*('+t_Water+'-'+s_Water+')/(100-'+t_Water+')';
+    var v =Math.round(eval(s)*10)/10;
+    document.getElementById('result').innerHTML =s+'='+v+'g'; 
+    document.getElementById('sourceAddWater').value=v;
+}
+
+</script>
